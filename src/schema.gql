@@ -1,0 +1,46 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type TransactionObject {
+  transactionExternalId: UUID!
+  transactionTypeId: Int!
+  transactionStatusId: UUID!
+  value: Float!
+  createdAt: DateTime!
+  transactionType: TransactionTypeObject!
+  transactionStatus: TransactionStatusObject!
+}
+
+"""A simple UUID parser"""
+scalar UUID
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type TransactionTypeObject {
+  id: Int!
+  name: String!
+}
+
+type TransactionStatusObject {
+  id: String!
+  name: String!
+}
+
+type Query {
+  getTransaction(id: UUID!): TransactionObject
+}
+
+type Mutation {
+  createTransaction(transaction: TransactionInput!): UUID!
+}
+
+input TransactionInput {
+  accountExternalIdDebit: UUID!
+  accountExternalIdCredit: UUID!
+  tranferTypeId: Int!
+  value: Float!
+}

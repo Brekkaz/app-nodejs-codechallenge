@@ -1,0 +1,7 @@
+syntax = "proto3";
+package transaction;
+
+message TransactionCreated {
+  required string transactionExternalId = 1;
+  required double value = 2;
+}
